@@ -1,9 +1,7 @@
-import svg from  "../images/wallet.svg"
-
 export const Wallet = () => {
-    console.log(svg);
     return (
         <div>
+            <img src={require("../images/MetaMask.png")}/>
             something
         </div>
     )
