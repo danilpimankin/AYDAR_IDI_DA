@@ -1,10 +1,11 @@
 import React from 'react';
 import { createRoot } from "react-dom/client";
 import "./styles/index.less";
+import { Header } from './components/Header';
 
 const HelloWorld = () => {
     return (
-        <h3>Hello World</h3>
+        <Header/>
     );
 };
 

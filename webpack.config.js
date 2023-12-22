@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
+console.log(__dirname);
 module.exports = {
     entry: "./src/index.tsx",
     output: {
@@ -45,6 +46,10 @@ module.exports = {
                         loader: 'css-loader',
                     },
                 ],
+            },
+            {
+                test: /\.(png|svg)$/,
+                type: "asset/resource"
             },
         ],
     },
