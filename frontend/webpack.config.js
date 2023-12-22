@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
-console.log(__dirname);
 module.exports = {
     entry: "./src/index.tsx",
     output: {

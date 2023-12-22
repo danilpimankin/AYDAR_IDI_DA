@@ -7,6 +7,7 @@ export const Header = () => {
         <div className="header">
             <div>
                 <img src={image} />
+                path to image is {image}<br/>
                 Wallet
             </div>
             <Wallet/>
