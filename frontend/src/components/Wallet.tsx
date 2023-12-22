@@ -1,8 +1,8 @@
 export const Wallet = () => {
     return (
-        <div>
-            <img src={require("../images/MetaMask.png")}/>
-            something
+        <div className="header__wallet">
+            <img src={require("../images/MetaMask.png")} />
+            Connect Wallet
         </div>
     )
 }
