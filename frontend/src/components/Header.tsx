@@ -1,7 +1,11 @@
 import { Wallet } from "./Wallet";
 import "../styles/header.less";
 
-export const Header = () => {
+export interface IWalletProps {
+    setWallet: (string) => void;
+}
+
+export const Header: React.FC<IWalletProps> = (setWallet: IWalletProps) => {
     return (
         <div className="header">
             <div className="header__title">
@@ -10,7 +14,7 @@ export const Header = () => {
                     Wallet
                 </div>
             </div>
-            <Wallet />
+            <Wallet setWallet={setWallet.setWallet} />
         </div>
     )
 }

@@ -1,7 +1,14 @@
-export const NFT = () => {
+import { NFTDTO } from "../../interfaces/requestInterface"
+
+interface NFTProps {
+    data: NFTDTO    
+}
+
+export const NFT: React.FC<NFTProps> = (nftProp: NFTProps) => {
+    const data = nftProp.data;
     return (
         <div className="base-wrapper nft">
-            <div className="nft__image"></div>
+            <img className="nft__image" src={data.coverUrl}></img>
             <label className="nft__author">author</label>
             <div className="nft__title">title</div>
             <div className="nft__actions">
