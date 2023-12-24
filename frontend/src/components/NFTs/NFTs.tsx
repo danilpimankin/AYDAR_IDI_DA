@@ -1,12 +1,13 @@
 import { Filter } from "./Filter"
 import { NFT } from "./NFT"
+import "../../styles/nfts.less"
 
 export const NFTs = () => {
     return (
-        <div>
+        <div className="base-wrapper nfts">
             <h1>NFTs</h1>
             <Filter />
-            <div>
+            <div className="nft-list">
                 <NFT />
                 <NFT />
                 <NFT />
