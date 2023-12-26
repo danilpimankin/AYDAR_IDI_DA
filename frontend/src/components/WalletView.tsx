@@ -1,15 +1,19 @@
-import { IWalletProps } from "./Header";
+import { observer } from "mobx-react";
+import { GlobalStore } from "../models/GlobalStore";
 
-export const Wallet: React.FC<IWalletProps> = (setWallet: IWalletProps) => {
+export const WalletView = observer((props: { store: GlobalStore }) => {
+    const { store } = props;
+    const { wallet } = store;
     const doShit = async () => {
         if (window.ethereum) {
             try {
                 const addressArray = await window.ethereum.request({
                     method: "eth_requestAccounts",
                 });
-                setWallet.setWallet(addressArray)
+                wallet.setWallet(addressArray)
+                wallet.address
             } catch (err) {
-                setWallet.setWallet("");
+                wallet.setWallet([]);
             }
         }
     }
@@ -19,4 +23,4 @@ export const Wallet: React.FC<IWalletProps> = (setWallet: IWalletProps) => {
             Connect Wallet
         </div>
     )
-}
+})

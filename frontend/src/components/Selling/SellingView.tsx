@@ -1,6 +1,10 @@
+import { observer } from "mobx-react"
 import "../../styles/selling.less"
+import { GlobalStore } from "../../models/GlobalStore"
 
-export const Selling = () => {
+export const SellingView = observer((props: { store: GlobalStore }) => {
+    const { store } = props;
+    const { selling } = store;
     return (
         <div className="base-wrapper selling">
             <h1>
@@ -13,4 +17,4 @@ export const Selling = () => {
             </div>
         </div>
     )
-}
+})

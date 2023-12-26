@@ -1,4 +1,4 @@
-export const Filter = () => {
+export const FilterView = () => {
     return (
         <div className="base-wrapper filter">
             <h3 className="filter__title">Price</h3>

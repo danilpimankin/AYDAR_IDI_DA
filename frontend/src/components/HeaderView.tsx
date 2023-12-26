@@ -1,11 +1,9 @@
-import { Wallet } from "./Wallet";
 import "../styles/header.less";
+import { observer } from "mobx-react";
+import { GlobalStore } from "../models/GlobalStore";
+import { WalletView } from "./WalletView";
 
-export interface IWalletProps {
-    setWallet: (string) => void;
-}
-
-export const Header: React.FC<IWalletProps> = (setWallet: IWalletProps) => {
+export const HeaderView = observer((props: { store: GlobalStore }) => {
     return (
         <div className="header">
             <div className="header__title">
@@ -14,7 +12,7 @@ export const Header: React.FC<IWalletProps> = (setWallet: IWalletProps) => {
                     Wallet
                 </div>
             </div>
-            <Wallet setWallet={setWallet.setWallet} />
+            <WalletView store={props.store} />
         </div>
     )
-}
+})

@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createRoot } from "react-dom/client";
 import "./styles/index.less";
-import { Header } from './components/Header';
-import { Selling } from './components/Selling/Selling';
-import { NFTs } from './components/NFTs/NFTs';
+import { HeaderView } from './components/HeaderView';
+import { SellingView } from './components/Selling/SellingView';
+import { NFTsView } from './components/NFTs/NFTsView';
 import Web3 from 'web3';
 import { contractABI } from './utils/contractABI';
+import { GlobalStore } from './models/GlobalStore';
+import { observer } from 'mobx-react';
 
 declare global {
     interface Window { ethereum: any }
@@ -17,16 +19,27 @@ const contractAddress = "0x5C5a283b3C31eD746ff32b5A5C065690F5E3437b";
 
 const contract = new web3.eth.Contract(contractABI, contractAddress);
 
-const HelloWorld = () => {
-    const [wallet, setWallet] = useState("");
+const HelloWorld = observer(() => {
+
+    const [store, setStore] = useState<GlobalStore | null>(null);
+
+    useEffect(() => {
+        setStore(new GlobalStore());
+    }, [])
+
     return (
         <div className={"base"}>
-            <Header setWallet={setWallet}/>
-            <Selling />
-            <NFTs />
+            {
+                store != null &&
+                <>
+                    <HeaderView store={store} />
+                    <SellingView store={store}/>
+                    <NFTsView store={store}/>
+                </>
+            }
         </div>
     );
-};
+});
 
 const container = document.getElementById("app");
 const root = createRoot(container);
