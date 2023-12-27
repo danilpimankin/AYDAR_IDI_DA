@@ -2,13 +2,11 @@ import { makeObservable, observable } from "mobx";
 import { NFT } from "./NFT";
 
 export class NFTs {
-    list: NFT[];
+    list: NFT[] = [];
     constructor() {
-        makeObservable({
+        makeObservable(this, {
             list: observable,
         });
-
-        this.list = [];
     }
 
     setList(value: NFT[]) {

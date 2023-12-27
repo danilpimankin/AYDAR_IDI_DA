@@ -2,14 +2,12 @@ import { action, makeObservable, observable } from "mobx";
 
 export class Wallet {
 
-    address: string[];
-
+    address: string[] = [];
     constructor() {
-        makeObservable({
+        makeObservable(this, {
             address: observable,
             setWallet: action
         })
-        this.address = [];
     }
 
     setWallet = (value: string[]) => {

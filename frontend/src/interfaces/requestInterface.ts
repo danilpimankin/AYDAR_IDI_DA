@@ -1,22 +1,27 @@
 export type IGetNFTsRequest = {
-    address?: string[],
-    chainin?: string[],
-    projectCertificated: boolean,
-    priceRangeCurrency: string,
-    priceRangeMax?: number,
-    priceRangeMin?: number,
-    cursor?: string,
-    pageNum: number,
-    pageSize: number,
+    "size": number,
+    "filter":
+    {
+        "verifiedOnly": boolean,
+        "sort": string,
+        "currency": string,
+        "blockchains": string[],
+        "hideItemsSupply"?: string,
+        "orderSources"?: [],
+        "minPrice"?: number,
+        "maxPrice"?: number,
+        "hasMetaContentOnly"?: boolean,
+        "priceBlockchain": string,
+    }
 }
 
 export type NFTsDTO = {
-    code: number,
-    data: NFTsDataDTO,
-    detailMsg: string,
-    error_code: string,
-    error_message: string,
-    msg: string,
+    blockchain: string,
+    creator: string,
+    creators: {address: string, value: number}[],
+    id: string,
+    token: string,
+    tokenId: string,
 }
 
 export type NFTsDataDTO = {

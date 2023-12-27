@@ -1,6 +1,7 @@
 import { observer } from "mobx-react";
 import { GlobalStore } from "../models/GlobalStore";
 
+
 export const WalletView = observer((props: { store: GlobalStore }) => {
     const { store } = props;
     const { wallet } = store;
@@ -11,7 +12,6 @@ export const WalletView = observer((props: { store: GlobalStore }) => {
                     method: "eth_requestAccounts",
                 });
                 wallet.setWallet(addressArray)
-                wallet.address
             } catch (err) {
                 wallet.setWallet([]);
             }

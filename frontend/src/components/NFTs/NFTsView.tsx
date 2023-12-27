@@ -4,17 +4,18 @@ import { NFTView } from "./NFTView"
 import "../../styles/nfts.less"
 import { observer } from "mobx-react"
 import { GlobalStore } from "../../models/GlobalStore"
-import { NFTService } from "../../services/NFTservice"
+import { NFTService } from "../../services/NFTService"
 
 export const NFTsView = observer((props: { store: GlobalStore }) => {
     const { store } = props;
     const { NFTs } = store;
 
-    useEffect(() => {
-        const data = NFTService.getNFTs({ projectCertificated: true, priceRangeCurrency: "ETH", pageNum: 1, pageSize: 30 }).then(data => {
-            NFTs.setList(data)
-        })
-    }, [])
+    // NOTE:: not working
+    // useEffect(() => {
+    //     const data = NFTService.getNFTs(NFTService.getDefaultRequest()).then(data => {
+    //         NFTs.setList(data)
+    //     })
+    // }, [])
 
 
     return (
