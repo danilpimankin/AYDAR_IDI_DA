@@ -14,6 +14,7 @@ module.exports = {
         //     react: path.join(__dirname, 'node_modules', 'react'),
         // },
     },
+    devtool: "source-map",
     module: {
         rules: [
             {
@@ -47,7 +48,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|svg)$/,
+                test: /\.png$/,
                 type: "asset/resource"
             },
         ],
