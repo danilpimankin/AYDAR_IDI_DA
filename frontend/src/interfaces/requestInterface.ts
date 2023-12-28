@@ -15,27 +15,30 @@ export type IGetNFTsRequest = {
     }
 }
 
+export type OwnershipDTO = {
+    id: string,
+    owner: string,
+    priceETH: number,
+}
+
+export type MediaEntryDTO = {
+    url: string,
+    sizeType: string,
+    contentType: string,
+    sourceMimeType: string
+}
+
+export type PropertiesDTO = {
+    name: string,
+    mediaEntries: MediaEntryDTO[]
+}
+
 export type NFTsDTO = {
     blockchain: string,
     creator: string,
-    creators: {address: string, value: number}[],
     id: string,
+    ownership: OwnershipDTO,
     token: string,
     tokenId: string,
-}
-
-export type NFTsDataDTO = {
-    cursor: string,
-    list: NFTDTO[],
-    total: number,
-}
-
-export type NFTDTO = {
-    collectionName: string,
-    contractAddress: string,
-    coverUrl: string,
-    name: string,
-    projectName: string,
-    tokenId: string,
-    ownerAddress: string,
+    properties: PropertiesDTO
 }

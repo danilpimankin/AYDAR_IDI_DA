@@ -11,20 +11,20 @@ export const NFTsView = observer((props: { store: GlobalStore }) => {
     const { NFTs } = store;
 
     // NOTE:: not working
-    // useEffect(() => {
-    //     const data = NFTService.getNFTs(NFTService.getDefaultRequest()).then(data => {
-    //         NFTs.setList(data)
-    //     })
-    // }, [])
+    useEffect(() => {
+        NFTService.getNFTs(NFTService.getDefaultRequest()).then(data => {
+            NFTs.setList(data)
+        })
+    }, [])
 
 
     return (
         <div className="base-wrapper nfts">
             <h1>NFTs</h1>
-            <FilterView />
+            <FilterView store={store} />
             <div className="nft-list">
                 {NFTs.list.map(item => {
-                    return <NFTView data={item} />
+                    return <NFTView data={item} store={store} contract={store.contract} />
                 })}
             </div>
         </div>

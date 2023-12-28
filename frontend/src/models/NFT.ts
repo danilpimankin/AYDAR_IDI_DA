@@ -1,4 +1,4 @@
-import { NFTDTO } from "../interfaces/requestInterface";
+import { NFTsDTO } from "../interfaces/requestInterface";
 
 export class NFT {
 
@@ -6,16 +6,15 @@ export class NFT {
     contractAddress: string;
     coverUrl: string;
     name: string;
-    projectName: string;
     tokenId: string;
     ownerAddress: string;
-    constructor(data: NFTDTO) {
-        this.collectionName = data.collectionName
-        this.contractAddress = data.contractAddress
-        this.coverUrl = data.coverUrl
-        this.name = data.name
-        this.projectName = data.projectName
-        this.tokenId = data.tokenId
-        this.ownerAddress = data.ownerAddress
+    price: number;
+    constructor(data: NFTsDTO) {
+        this.contractAddress = data.token
+        this.coverUrl = data.properties.mediaEntries[0].url;
+        this.name = data.properties.name;
+        this.tokenId = data.tokenId;
+        this.ownerAddress = data.creator;
+        this.price = data.ownership.priceETH;
     }
 }

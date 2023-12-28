@@ -6,13 +6,14 @@ import { SellingView } from './components/Selling/SellingView';
 import { NFTsView } from './components/NFTs/NFTsView';
 import { GlobalStore } from './models/GlobalStore';
 import { observer } from 'mobx-react';
+import { Toaster } from 'react-hot-toast';
 
 declare global {
     interface Window { ethereum: any }
 }
 
 
-const HelloWorld = observer(() => {
+const GlobalView = observer(() => {
 
     const [store, setStore] = useState<GlobalStore | null>(null);
 
@@ -30,10 +31,11 @@ const HelloWorld = observer(() => {
                     <NFTsView store={store}/>
                 </>
             }
+            <Toaster/>
         </div>
     );
 });
 
 const container = document.getElementById("app");
 const root = createRoot(container);
-root.render(<HelloWorld />);
+root.render(<GlobalView />);
